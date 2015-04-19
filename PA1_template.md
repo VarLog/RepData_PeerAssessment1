@@ -45,7 +45,7 @@ means_per_day <- tapply(data$steps, as.factor(as.character(data$date)), mean, na
 We ignored `NA` values. So let's make a histogram:
 
 ```r
-hist(means_per_day)
+hist(means_per_day, xlab="Value of the mean", col="red", main="Histogram of the means per day")
 ```
 
 ![](PA1_template_files/figure-html/means_per_day-1.png) 
@@ -85,7 +85,8 @@ And now we can make a plot:
 
 
 ```r
-plot(names(means_per_interval), means_per_interval, type = "l")
+plot(names(means_per_interval), means_per_interval, type = "l",
+     xlab="Interval", ylab="Mean", main="Average daily activity pattern")
 ```
 
 ![](PA1_template_files/figure-html/means_per_interval-1.png) 
@@ -140,7 +141,7 @@ Let's make a histogram as previously but with data where NA values were filled i
 
 ```r
 means_per_day <- tapply(data$steps, as.factor(as.character(data$date)), mean)
-hist(means_per_day)
+hist(means_per_day, xlab="Value of the mean", col="red", main="Histogram of the means per day")
 ```
 
 ![](PA1_template_files/figure-html/means_per_day_without_na-1.png) 
@@ -203,9 +204,11 @@ And make a plot:
 
 
 ```r
-par(mfrow = c(2, 1)) 
-plot(row.names(means_by_weekday_type), means_by_weekday_type[,1], type = "l")
-plot(row.names(means_by_weekday_type), means_by_weekday_type[,2], type = "l")
+par(mfrow = c(2, 1))
+plot(row.names(means_by_weekday_type), means_by_weekday_type[,1], type = "l",
+     xlab="Interval", ylab="Mean", main = "Average daily activity pattern on weekdays")
+plot(row.names(means_by_weekday_type), means_by_weekday_type[,2], type = "l",
+     xlab="Interval", ylab="Mean", main = "Average daily activity pattern on weekends")
 ```
 
 ![](PA1_template_files/figure-html/means_by_weekday_type-1.png) 
